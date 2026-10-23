@@ -1,179 +1,42 @@
-<div align="center">
+# Magic Resume · 社区二次开发版
 
-# ✨ Magic Resume ✨
+> 本仓库由 [BinYuanc](https://github.com/BinYuanc) 基于 [JOYCEQL/magic-resume](https://github.com/JOYCEQL/magic-resume) 维护与修改。这里的使用说明以本仓库为准，并非上游项目的官方发布页。
 
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-![TanStack Start](https://img.shields.io/badge/TanStack_Start-latest-black)
-![Framer Motion](https://img.shields.io/badge/Framer_Motion-10.0-purple)
+## 项目用途
 
-<a href="https://trendshift.io/repositories/13077" target="_blank"><img src="https://trendshift.io/api/badge/repositories/13077" alt="Magic Resume | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
+用于在浏览器中编辑和预览个人简历，支持主题调整、PDF 导出等简历制作场景。仓库包含 AI 辅助编辑相关实现；具体能力及兼容性请以当前代码和实际运行结果为准。
 
+## 安装与启动
 
-简体中文 | [English](./README.md)
-
-</div>
-
-Magic Resume 是一个现代化的在线简历编辑器，让创建专业简历变得简单有趣。基于 TanStack Start 和 Motion 构建，支持实时预览和自定义主题。
-
-## 📸 项目截图
-
-<img width="1920" height="1440" alt="85_1x_shots_so" src="https://github.com/user-attachments/assets/4667e49a-7bf2-4379-9390-725e42799dc7" />
-
-
-## ✨ 特性
-
-- 🚀 基于 TanStack Start 构建
-- 💫 流畅的动画效果 (Motion)
-- 🎨 自定义主题支持
-- 🌙 深色模式
-- 📤 导出为 PDF
-- 🔄 实时预览
-- 💾 自动保存
-- 🔒 硬盘级存储
-
-## 🛠️ 技术栈
-
-- TanStack Start
-- TypeScript
-- Motion
-- Tiptap
-- Tailwind CSS
-- Zustand
-- Shadcn/ui
-- Lucide Icons
-
-## 🚀 快速开始
-
-1. 克隆项目
+需要 Node.js 和 pnpm。克隆**本仓库**：
 
 ```bash
-git clone git@github.com:JOYCEQL/magic-resume.git
-cd magic-resume
-```
-
-2. 安装依赖
-
-```bash
+git clone https://github.com/BinYuanc/magic_Resume.git
+cd magic_Resume
 pnpm install
-```
-
-3. 启动开发服务器
-
-```bash
 pnpm dev
 ```
 
-4. 打开浏览器访问 `http://localhost:3000`
+按终端提示打开本地页面（通常为 http://localhost:3000）。
 
-### Windows 一键启动（下载即用）
+Windows 用户可尝试仓库根目录的 `start-magic-resume.vbs` / `start-magic-resume.bat`；如启动失败，请先通过命令行启动并查看报错。
 
-不想敲命令：从 GitHub 下载 ZIP 解压后，直接双击根目录的启动脚本即可。
+Docker 用户可按仓库现有配置尝试 `docker compose up -d`，部署前请自行检查环境变量与网络连通性。
 
-- `start-magic-resume.vbs`：**推荐**。第一次双击打开一个命令行窗口运行服务，**关掉这个窗口就停止服务**；之后再双击只会直接打开网页，不会重复开窗口。启动链路是 `wscript` → `cmd` → `node`（均已签名），不会弹「无法验证发布者」警告。
-- `start-magic-resume.bat`：等价脚本，带窗口；首次安装依赖或排查问题时用（批处理本身没有签名，双击可能弹「未知发布者」，点「运行」即可）
-- `stop-magic-resume.vbs`：不弹窗口地停止后台服务
-- `stop-magic-resume.bat`：按端口停止监听 3000 的进程
+## 当前维护状态与已知限制
 
-脚本会自动定位自己所在的目录（放到任意路径都能用），服务就绪后自动打开 `http://localhost:3000`。
-想把启动脚本放到桌面：右键 → 新建快捷方式 → 目标填 `wscript.exe "完整路径\start-magic-resume.vbs"`。
+- **功能验证范围**：本说明尚未完成逐功能运行回归；请勿将仓库中出现的功能代码等同于已经验证可用。
+- **AI 服务**：通常需要自行配置对应服务的 API 凭据；模型服务可用性、代理设置及费用取决于用户环境。
+- **浏览器导出与排版**：不同浏览器、字体及纸张设置可能影响 PDF 的分页与排版；建议导出后人工检查。
+- **Windows 一键启动**：依赖本机运行环境与端口状态；如有异常，请使用 `pnpm dev` 定位。
+- **待确认 Bug**：尚未建立基于复现步骤、影响版本和日志的已确认 Bug 清单。欢迎通过 Issues 提交可复现问题，避免将未经核实的猜测写成已知故障。
 
-## 📦 构建打包
+## 问题反馈
 
-```bash
-pnpm build
-```
+请在 [本仓库 Issues](https://github.com/BinYuanc/magic_Resume/issues) 提交：运行系统、启动方式、复现步骤、预期/实际结果及脱敏日志。不要公开上传简历隐私或 API Key。
 
-### AI 厂商网络配置
+## 二次开发与版权说明
 
-Cloudflare Workers 使用平台原生 `fetch`，无需配置应用层代理。Node.js 或 Docker 部署在无法直连 OpenAI、Gemini、Anthropic 的地区时，可以设置 `AI_PROXY_URL`；同时兼容 `HTTPS_PROXY` 和 `HTTP_PROXY`。
+原始项目：[JOYCEQL/magic-resume](https://github.com/JOYCEQL/magic-resume)。感谢原项目作者及贡献者。本仓库不是原作者的官方版本；原项目的联系方式、赞助信息与收款入口不代表本仓库维护者。
 
-```bash
-AI_PROXY_URL=http://127.0.0.1:7890
-```
-
-DeepSeek、通义千问和豆包保持直连。
-
-## 🐳 Docker 部署
-
-### Docker Compose
-
-1. 确保你已经安装了 Docker 和 Docker Compose
-
-2. 在项目根目录运行：
-
-```bash
-docker compose up -d
-```
-
-这将会：
-
-- 自动构建应用镜像
-- 在后台启动容器
-
-
-
-## 📝 许可协议与使用限制
-
-本项目源代码基于 **Apache 2.0** 协议发布，并附带**仅限非商业使用**的额外限制：
-
-- **个人免费**：仅限个人非商业目的（如个人学习交流、制作个人简历）免费使用。
-- **禁止商用**：不得将本项目用于任何商业目的，包括将其作为收费或营利性服务（如 SaaS/PaaS）对外提供、用于企业商业运营、转售或进行二次商业化开发，**无论是否修改源代码**。
-
-详情请查看 [LICENSE](LICENSE) 文件。
-
-## 🗺️ 路线图
-
-- [x] AI 辅助编写
-- [x] 多语言支持
-- [ ] 支持更多简历模板
-- [x] 更多格式导出
-- [x] 自定义模型
-- [x] 自动一页纸
-- [x] 导入 PDF, Markdown 等
-- [ ] 在线简历托管
-
-## 📈 Star History
-
-<a href="https://star-history.com/#JOYCEQL/magic-resume&Date">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=JOYCEQL/magic-resume&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=JOYCEQL/magic-resume&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=JOYCEQL/magic-resume&type=Date" />
- </picture>
-</a>
-
-## 📞 联系方式
-
-可以通过以下方式关注最新动态:
-
-- 作者：SiYue
-- X: @GuangzhouY81070
-- Discord: 欢迎加入群组 https://discord.gg/9mWgZrW3VN
-- 邮箱：18806723365@163.com
-  
-
-- 项目主页：https://github.com/JOYCEQL/magic-resume
-
-## 🌟 支持项目
-
-<img src="https://github.com/JOYCEQL/picx-images-hosting/raw/master/pintu-fulicat.com-1741081632544.26lmg2uc2m.webp" width="320"  alt="图片描述">
-
-## ❤️ 赞助名单
-
-<div align="center">
-  <h3>Sponsors</h3>
-  <p>如果您赞助了本项目，但没展示在这里，请联系我。</p>
-  <p>
-    <a href="https://github.com/yj147">
-      <img src="https://github.com/yj147.png?size=40" width="40" height="40" alt="@yj147" />
-    </a>
-    <a href="https://github.com/someone1128">
-      <img src="https://github.com/someone1128.png?size=40" width="40" height="40" alt="@someone1128" />
-    </a>
-    <!-- 在这里继续添加赞助者：
-    <a href="https://github.com/<username>">
-      <img src="https://github.com/<username>.png?size=40" width="40" height="40" alt="@<username>" />
-    </a>
-    -->
-  </p>
-</div>
+**许可注意**：仓库 `LICENSE` 包含 Apache 2.0 相关表述及额外商业使用限制。该组合的法律效力及商业授权边界应以适用法律和权利人授权为准；请在商用或再分发前自行核实，勿仅凭 README 判断可商用。
